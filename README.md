@@ -83,8 +83,8 @@ streamlit run app/app.py
 
 To re-run the training pipeline or feature engineering:
 
-1.  Navigate to the `notebooks/` directory to view the step-by-step EDA and training process.
-2.  Or run the modular scripts in `src/` (if configured as executable scripts).
+1.  Navigate to the `notebooks/` directory to view the step-by-step EDA.
+2.  Run the scripts in `src/models`.
 
 ## 📊 Data Pipeline
 
