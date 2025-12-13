@@ -1,9 +1,3 @@
-I sincerely apologize for the frustration. Here is the \*\*entire\*\* content of the `README.md` file, including all the expanded details, enclosed in a single raw code block for easy copying.
-
-
-
-````markdown
-
 \# 🏙️ Urban Intelligence: Forecasting PM2.5 in New Delhi
 
 
@@ -298,11 +292,8 @@ The Proof of Concept (PoC) includes two main sections:
 
 
 
-This project is licensed under the MIT License - see the \[LICENSE](https://www.google.com/search?q=LICENSE) file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 
 
 ```
-
-```
-
