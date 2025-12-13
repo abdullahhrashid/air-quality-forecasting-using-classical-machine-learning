@@ -14,14 +14,14 @@ The codebase is organized as follows:
 
 ```text
 ├── app/                 # Source code for the Streamlit Web Dashboard (PoC)
-├── data/                # Data storage (Git-ignored if large)
+├── data/                # Data storage 
 │   ├── raw/             # Original immutable data
 │   │   ├── pm25/        # Historical PM2.5 data (2019-2025)
 │   │   ├── meteorological/ # Visual Crossing weather data
 │   │   └── solar/       # Copernicus solar radiation & boundary layer data
 │   ├── interim/         # Intermediate transformed data
 │   └── processed/       # Final datasets ready for modeling
-├── models/              # Serialized trained models (.pkl, .json, .cbm)
+├── models/              # Serialized trained models
 ├── notebooks/           # Jupyter notebooks for EDA and experimentation
 ├── src/                 # Modular source code for the pipeline
 │   ├── data/            # Scripts to fetch and clean data
