@@ -34,11 +34,11 @@ The codebase is organized as follows:
 
 The project relies on the following key libraries (found in `venv`):
 
-  * **Core:** `numpy`, `pandas`, `scikit-learn`, `scipy`
+  * **Core:** `numpy`, `pandas`, `scikit-learn`
   * **Modeling:** `catboost`, `xgboost`, `lightgbm`
-  * **Visualization:** `plotly`, `matplotlib`, `seaborn`, `pydeck`
+  * **Visualization:** `matplotlib`, `seaborn`
   * **Dashboarding:** `streamlit`
-  * **Data Handling:** `xarray`, `netCDF4` (for solar .nc files), `pyarrow`
+  * **Data Handling:** `xarray`, `netCDF4` (for solar .nc files)
 
 ## 🚀 Installation & Setup
 
