@@ -45,8 +45,8 @@ The project relies on the following key libraries (found in `venv`):
 1.  **Clone the repository:**
 
     ```bash
-    git clone [https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git)
-    cd ml_proj
+    git clone git clone https://github.com/abdullahhrashid/air-quality-forecasting-using-classical-machine-learning.git project
+    cd project
     ```
 
 2.  **Set up the environment:**
@@ -113,11 +113,6 @@ The final **Hybrid Ensemble Model** achieved the following on the 2025 Test Set:
 | **MAPE** | **0.21** |
 
 *The model effectively captures seasonal trends and demonstrates low bias, though it remains conservative regarding extreme outlier events.*
-
-## 👥 Authors
-
-  * **Syed Mohammad Abdullah Rashid**
-  * **Saad Saghir Minhas**
 
 ## 📜 License
 
