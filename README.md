@@ -76,10 +76,8 @@ The project relies on the following key libraries (found in `venv`):
 To launch the interactive web application:
 
 ```bash
-streamlit run app/main.py
+streamlit run app/app.py
 ```
-
-*(Note: Replace `main.py` with the actual name of your script inside the `app` folder).*
 
 ### Reproducing the Model
 
