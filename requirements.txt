@@ -1,0 +1,14 @@
+pandas
+matplotlib
+numpy
+requests
+cdsapi
+xarray
+netcdf4
+dask
+seaborn
+scikit-learn
+xgboost
+lightgbm
+catboost
+streamlit
