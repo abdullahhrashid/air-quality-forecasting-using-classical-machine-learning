@@ -1,299 +1,124 @@
-\# 🏙️ Urban Intelligence: Forecasting PM2.5 in New Delhi
+# 🏙️ Urban Intelligence: Forecasting PM2.5 in New Delhi
 
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B)
+![Status](https://img.shields.io/badge/Status-Completed-success)
 
+## 📖 Project Overview
+This project addresses the critical issue of air pollution in New Delhi by developing a robust machine learning pipeline to forecast daily **PM2.5 concentrations**. 
 
-!\[Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+Using a **Hybrid Ensemble Voting Model (CatBoost + XGBoost)**, the system integrates historical pollution data, meteorological conditions, and solar radiation data to predict air quality levels. The project culminates in an interactive **Streamlit Web Dashboard** that provides actionable health insights based on these predictions.
 
-!\[Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B)
-
-!\[Status](https://img.shields.io/badge/Status-Completed-success)
-
-
-
-\## 📖 Project Overview
-
-This project addresses the critical issue of air pollution in New Delhi by developing a robust machine learning pipeline to forecast daily \*\*PM2.5 concentrations\*\*. 
-
-
-
-Using a \*\*Hybrid Ensemble Voting Model\*\*, the system integrates historical pollution data (2019-2025), meteorological conditions, and solar radiation data to predict air quality levels. The project culminates in an interactive \*\*Streamlit Web Dashboard\*\* that not only predicts pollution levels but also provides actionable health insights for the public.
-
-
-
-\## 📂 Project Structure
-
+## 📂 Project Structure
 The codebase is organized as follows:
 
-
-
 ```text
-
 ├── app/                 # Source code for the Streamlit Web Dashboard (PoC)
-
-├── data/                # Data storage
-
+├── data/                # Data storage (Git-ignored if large)
 │   ├── raw/             # Original immutable data
-
-│   │   ├── pm25/        # OpenAQ PM2.5 data (2019-2025)
-
+│   │   ├── pm25/        # Historical PM2.5 data (2019-2025)
 │   │   ├── meteorological/ # Visual Crossing weather data
-
-│   │   └── solar/       # Copernicus solar radiation \& boundary layer data (NetCDF)
-
+│   │   └── solar/       # Copernicus solar radiation & boundary layer data
 │   ├── interim/         # Intermediate transformed data
-
-│   └── processed/       # Final datasets merged and ready for modeling
-
-├── models/              # Serialized trained models (CatBoost, XGBoost, etc.)
-
+│   └── processed/       # Final datasets ready for modeling
+├── models/              # Serialized trained models (.pkl, .json, .cbm)
 ├── notebooks/           # Jupyter notebooks for EDA and experimentation
-
 ├── src/                 # Modular source code for the pipeline
-
-│   ├── data/            # Scripts to fetch, clean, and impute data
-
-│   ├── features/        # Feature engineering logic (Lags, Rolling stats, Cyclical)
-
-│   └── models/          # Model training, grid search, and evaluation scripts
-
+│   ├── data/            # Scripts to fetch and clean data
+│   ├── features/        # Feature engineering logic (Lags, Rolling stats)
+│   └── models/          # Model training and evaluation scripts
 └── requirements.txt     # Python dependencies
-
 ````
 
+## 🛠️ Tech Stack & Dependencies
 
+The project relies on the following key libraries (found in `venv`):
 
-\## 🛠️ Tech Stack \& Dependencies
+  * **Core:** `numpy`, `pandas`, `scikit-learn`, `scipy`
+  * **Modeling:** `catboost`, `xgboost`, `lightgbm`
+  * **Visualization:** `plotly`, `matplotlib`, `seaborn`, `pydeck`
+  * **Dashboarding:** `streamlit`
+  * **Data Handling:** `xarray`, `netCDF4` (for solar .nc files), `pyarrow`
 
+## 🚀 Installation & Setup
 
+1.  **Clone the repository:**
 
-The project relies on a comprehensive stack of data science and engineering libraries:
+    ```bash
+    git clone [https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git)
+    cd ml_proj
+    ```
 
+2.  **Set up the environment:**
+    It is recommended to use a virtual environment.
 
+    ```bash
+    # Create virtual environment
+    python -m venv venv
 
-| Category | Libraries |
+    # Activate (Windows)
+    .\venv\Scripts\activate
 
-| :--- | :--- |
+    # Activate (Mac/Linux)
+    source venv/bin/activate
+    ```
 
-| \*\*Core\*\* | `numpy`, `pandas`, `scipy` |
+3.  **Install dependencies:**
 
-| \*\*Machine Learning\*\* | `scikit-learn`, `catboost`, `xgboost`, `lightgbm` |
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-| \*\*Visualization\*\* | `plotly`, `matplotlib`, `seaborn`, `pydeck`, `altair` |
+## 💻 Usage
 
-| \*\*Web Application\*\* | `streamlit`, `flask` |
+### Running the Dashboard (PoC)
 
-| \*\*Data Handling\*\* | `xarray`, `netCDF4` (for .nc files), `pyarrow` |
-
-
-
-\## 🚀 Installation \& Setup
-
-
-
-1\.  \*\*Clone the repository:\*\*
-
-
-
-&nbsp;   ```bash
-
-&nbsp;   git clone \[https://github.com/YOUR\_USERNAME/YOUR\_REPO\_NAME.git](https://github.com/YOUR\_USERNAME/YOUR\_REPO\_NAME.git)
-
-&nbsp;   cd ml\_proj
-
-&nbsp;   ```
-
-
-
-2\.  \*\*Set up the environment:\*\*
-
-&nbsp;   It is recommended to use a virtual environment to avoid conflicts.
-
-
-
-&nbsp;   ```bash
-
-&nbsp;   # Create virtual environment
-
-&nbsp;   python -m venv venv
-
-
-
-&nbsp;   # Activate (Windows)
-
-&nbsp;   .\\venv\\Scripts\\activate
-
-
-
-&nbsp;   # Activate (Mac/Linux)
-
-&nbsp;   source venv/bin/activate
-
-&nbsp;   ```
-
-
-
-3\.  \*\*Install dependencies:\*\*
-
-
-
-&nbsp;   ```bash
-
-&nbsp;   pip install -r requirements.txt
-
-&nbsp;   ```
-
-
-
-\## 📊 Data Pipeline
-
-
-
-\### 1\\. Data Acquisition
-
-
-
-The dataset spans \*\*2019 to 2025\*\* and aggregates data from three distinct sources:
-
-
-
-&nbsp; \* \*\*OpenAQ:\*\* Daily average PM2.5 levels.
-
-&nbsp; \* \*\*Visual Crossing:\*\* Meteorological data (Temperature, Humidity, Windspeed, Precipitation).
-
-&nbsp; \* \*\*Copernicus Climate Data Store:\*\* Solar Radiation and Boundary Layer Height.
-
-
-
-\### 2\\. Preprocessing \& Cleaning
-
-
-
-&nbsp; \* \*\*Outlier Removal:\*\* Removed negative and impossible PM2.5 values.
-
-&nbsp; \* \*\*Gap Imputation:\*\* Addressed a significant \*\*109-day gap\*\* in the PM2.5 data by imputing values based on historical yearly averages, leveraging the strong seasonal patterns.
-
-&nbsp; \* \*\*One-Hot Encoding:\*\* Applied to categorical `Conditions` (e.g., Rain, Clear).
-
-
-
-\### 3\\. Feature Engineering
-
-
-
-To capture temporal dependencies, we engineered the following features:
-
-
-
-&nbsp; \* \*\*Lag Features:\*\* `lag\_1` through `lag\_7` (past 7 days of pollution).
-
-&nbsp; \* \*\*Rolling Statistics:\*\* 7-day `moving\_mean` and `moving\_std`.
-
-&nbsp; \* \*\*Cyclical Encoding:\*\* Sine and Cosine transformations for `Day` and `Month`.
-
-&nbsp; \* \*\*Calendar Features:\*\* `day\_of\_week`, `is\_weekend`.
-
-
-
-\## 📈 Model Performance
-
-
-
-We evaluated multiple models on the \*\*2025 Test Set\*\*. The \*\*Hybrid Ensemble\*\* (Voting Regressor) outperformed individual models by combining the temporal strengths of CatBoost with the physical modeling capabilities of XGBoost.
-
-
-
-\### Hybrid Formula
-
-
-
-The final prediction is calculated as:
-
-$$ Pred\_{ensemble} = (0.72 \\times Pred\_{CatBoost}) + (0.28 \\times Pred\_{XGBoost}) $$
-
-
-
-\### Evaluation Metrics (Test Set 2025)
-
-
-
-| Model | MAE | RMSE | MAPE |
-
-| :--- | :--- | :--- | :--- |
-
-| \*\*Baseline\*\* | 57.25 | 68.28 | 1.36 |
-
-| Linear Regression | 19.71 | 30.07 | 0.37 |
-
-| SVR | 18.38 | 30.04 | 0.38 |
-
-| Elastic Net | 19.41 | 29.67 | 0.36 |
-
-| XGBoost | 16.33 | 26.40 | 0.22 |
-
-| CatBoost | 15.95 | 25.73 | 0.22 |
-
-| \*\*Hybrid Ensemble\*\* | \*\*15.71\*\* | \*\*25.33\*\* | \*\*0.21\*\* |
-
-
-
-\## 💻 Usage
-
-
-
-\### Running the Dashboard (PoC)
-
-
-
-To launch the interactive web application which demonstrates the model:
-
-
+To launch the interactive web application:
 
 ```bash
-
 streamlit run app/main.py
-
 ```
 
+*(Note: Replace `main.py` with the actual name of your script inside the `app` folder).*
 
+### Reproducing the Model
 
-\### Dashboard Features
+To re-run the training pipeline or feature engineering:
 
+1.  Navigate to the `notebooks/` directory to view the step-by-step EDA and training process.
+2.  Or run the modular scripts in `src/` (if configured as executable scripts).
 
+## 📊 Data Pipeline
 
-The Proof of Concept (PoC) includes two main sections:
+The dataset spans from **2019 to 2025** and aggregates data from three sources:
 
+1.  **OpenAQ:** Daily average PM2.5 levels (Imputed using historical yearly averages for gaps).
+2.  **Visual Crossing:** Temperature, Humidity, Windspeed, Precipitation.
+3.  **Copernicus Climate Data Store:** Solar Radiation and Boundary Layer Height.
 
+**Feature Engineering highlights:**
 
-1\.  \*\*Validation:\*\* Visualize model performance against ground truth for 2025.
+  * Lag features (1-7 days).
+  * Rolling Mean & Standard Deviation (7-day window).
+  * Cyclical encoding for Day and Month.
 
-2\.  \*\*Prediction \& Health:\*\* Input custom weather/lag conditions to get a forecast and specific health advice:
+## 📈 Model Performance
 
-&nbsp;     \* 🏋️ \*\*Workout:\*\* Recommendations for indoor vs. outdoor exercise.
+The final **Hybrid Ensemble Model** achieved the following on the 2025 Test Set:
 
-&nbsp;     \* 🏫 \*\*Schools:\*\* Advisory on whether schools should remain open.
+| Metric | Score |
+| :--- | :--- |
+| **MAE** | **15.71** |
+| **RMSE** | **25.33** |
+| **MAPE** | **0.21** |
 
-&nbsp;     \* 🚬 \*\*Cigarette Equivalence:\*\* Visualizing pollution in terms of cigarettes smoked.
+*The model effectively captures seasonal trends and demonstrates low bias, though it remains conservative regarding extreme outlier events.*
 
-&nbsp;     \* 😷 \*\*Protection:\*\* Mask mandates and warnings for asthma sensitivity.
+## 👥 Authors
 
+  * **Syed Mohammad Abdullah Rashid**
+  * **Saad Saghir Minhas**
 
-
-\## 👥 Authors
-
-
-
-&nbsp; \* \*\*Syed Mohammad Abdullah Rashid\*\*
-
-&nbsp; \* \*\*Saad Saghir Minhas\*\*
-
-
-
-\## 📜 License
-
-
+## 📜 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-
-
-```
