@@ -1,36 +1,36 @@
-# 🏙️ Urban Intelligence: Forecasting PM2.5 in New Delhi
+# Urban Intelligence: Forecasting PM2.5 in New Delhi
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
 ![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B)
 ![Status](https://img.shields.io/badge/Status-Completed-success)
 
-## 📖 Project Overview
+## Project Overview
 This project addresses the critical issue of air pollution in New Delhi by developing a robust machine learning pipeline to forecast daily **PM2.5 concentrations**. 
 
 Using a **Hybrid Ensemble Voting Model (CatBoost + XGBoost)**, the system integrates historical pollution data, meteorological conditions, and solar radiation data to predict air quality levels. The project culminates in an interactive **Streamlit Web Dashboard** that provides actionable health insights based on these predictions.
 
-## 📂 Project Structure
+## Project Structure
 The codebase is organized as follows:
 
 ```text
-├── app/                 # Source code for the Streamlit Web Dashboard (PoC)
-├── data/                # Data storage 
-│   ├── raw/             # Original immutable data
-│   │   ├── pm25/        # Historical PM2.5 data (2019-2025)
-│   │   ├── meteorological/ # Visual Crossing weather data
-│   │   └── solar/       # Copernicus solar radiation & boundary layer data
-│   ├── interim/         # Intermediate transformed data
-│   └── processed/       # Final datasets ready for modeling
-├── models/              # Serialized trained models
-├── notebooks/           # Jupyter notebooks for EDA and experimentation
-├── src/                 # Modular source code for the pipeline
-│   ├── data/            # Scripts to fetch and clean data
-│   ├── features/        # Feature engineering logic (Lags, Rolling stats)
-│   └── models/          # Model training and evaluation scripts
-└── requirements.txt     # Python dependencies
+├── app/                     # Source code for the Streamlit Web Dashboard (PoC)
+├── data/                    # Data storage 
+│   ├── raw/                 # Original immutable data
+│   │   ├── pm25/            # Historical PM2.5 data (2019-2025)
+│   │   ├── meteorological/  # Visual Crossing weather data
+│   │   └── solar/           # Copernicus solar radiation & boundary layer data
+│   ├── interim/             # Intermediate transformed data
+│   └── processed/           # Final datasets ready for modeling
+├── models/                  # Serialized trained models
+├── notebooks/               # Jupyter notebooks for EDA and experimentation
+├── src/                     # Modular source code for the pipeline
+│   ├── data/                # Scripts to fetch and clean data
+│   ├── features/            # Feature engineering logic (Lags, Rolling stats)
+│   └── models/              # Model training and evaluation scripts
+└── requirements.txt         # Python dependencies
 ````
 
-## 🛠️ Tech Stack & Dependencies
+## Tech Stack & Dependencies
 
 The project relies on the following key libraries (found in `venv`):
 
@@ -40,12 +40,12 @@ The project relies on the following key libraries (found in `venv`):
   * **Dashboarding:** `streamlit`
   * **Data Handling:** `xarray`, `netCDF4` (for solar .nc files)
 
-## 🚀 Installation & Setup
+## Installation & Setup
 
 1.  **Clone the repository:**
 
     ```bash
-    git clone git clone https://github.com/abdullahhrashid/air-quality-forecasting-using-classical-machine-learning.git project
+    git clone https://github.com/abdullahhrashid/air-quality-forecasting-using-classical-machine-learning.git project
     cd project
     ```
 
@@ -69,7 +69,7 @@ The project relies on the following key libraries (found in `venv`):
     pip install -r requirements.txt
     ```
 
-## 💻 Usage
+## Usage
 
 ### Running the Dashboard (PoC)
 
@@ -86,7 +86,7 @@ To re-run the training pipeline or feature engineering:
 1.  Navigate to the `notebooks/` directory to view the step-by-step EDA.
 2.  Run the scripts in `src/models`.
 
-## 📊 Data Pipeline
+## Data Pipeline
 
 The dataset spans from **2019 to 2025** and aggregates data from three sources:
 
@@ -100,7 +100,7 @@ The dataset spans from **2019 to 2025** and aggregates data from three sources:
   * Rolling Mean & Standard Deviation (7-day window).
   * Cyclical encoding for Day and Month.
 
-## 📈 Model Performance
+## Model Performance
 
 The final **Hybrid Ensemble Model** achieved the following on the 2025 Test Set:
 
@@ -112,6 +112,6 @@ The final **Hybrid Ensemble Model** achieved the following on the 2025 Test Set:
 
 *The model effectively captures seasonal trends and demonstrates low bias, though it remains conservative regarding extreme outlier events.*
 
-## 📜 License
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
