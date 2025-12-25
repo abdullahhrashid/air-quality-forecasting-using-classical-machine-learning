@@ -1,6 +1,6 @@
 # Urban Intelligence: Forecasting PM2.5 in New Delhi
 
-![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+![Python](https://img.shields.io/badge/Python-3.11%2B-blue)
 ![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B)
 ![Status](https://img.shields.io/badge/Status-Completed-success)
 
